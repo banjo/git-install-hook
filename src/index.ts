@@ -1,48 +1,16 @@
 #!/usr/bin/env node
 
 import { objectKeys } from "@banjoanton/utils";
-import { cli } from "cleye";
 import { default as createDebugger } from "debug";
 import { globby } from "globby";
 import prompts from "prompts";
-import { version } from "../package.json";
+import { argv, CliType } from "./cli";
 import { command } from "./command";
-
-const argv = cli({
-    name: "git-install-hook",
-    version,
-    help: {
-        description: `Install (or prompt for installation) when a lock file changes. 
-Automatically detects the package manager to use.`,
-    },
-    flags: {
-        debug: {
-            type: Boolean,
-            description: "Enable debug mode",
-            alias: "d",
-            default: false,
-        },
-        prompt: {
-            type: Boolean,
-            description: "Prompt for installation on lock file change",
-            alias: "p",
-            default: false,
-        },
-    },
-});
-
-type CliType = typeof argv;
+import { DEFAULT_PACKAGE_MANAGER, installCommandMap, lockFileMap } from "./maps";
 
 const main = async (args: CliType) => {
     const debug = createDebugger("git-install-hook");
     if (args.flags.debug) createDebugger.enable("*");
-
-    const defaultPackageManager = "npm";
-    const lockFileMap = {
-        npm: "package-lock.json",
-        yarn: "yarn.lock",
-        pnpm: "pnpm-lock.yaml",
-    };
 
     const lockFiles = await globby(Object.values(lockFileMap), {
         ignore: ["node_modules"],
@@ -51,10 +19,10 @@ const main = async (args: CliType) => {
 
     debug(`Found lock files: ${lockFiles}`);
 
-    let selectedLockFile = lockFileMap[defaultPackageManager];
+    let selectedLockFile = lockFileMap[DEFAULT_PACKAGE_MANAGER];
 
     if (lockFiles.length === 0 || lockFiles.length > 1) {
-        debug(`No (or multiple) lock file(s) found, using ${defaultPackageManager} as default`);
+        debug(`No (or multiple) lock file(s) found, using ${DEFAULT_PACKAGE_MANAGER} as default`);
     }
 
     if (lockFiles.length === 1) {
@@ -98,12 +66,6 @@ const main = async (args: CliType) => {
             process.exit(0);
         }
     }
-
-    const installCommandMap = {
-        npm: "npm ci",
-        yarn: "yarn install --pure-lockfile",
-        pnpm: "pnpm install --frozen-lockfile",
-    };
 
     const installCommand = installCommandMap[selectedPackageManager];
 
