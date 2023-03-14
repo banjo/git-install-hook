@@ -25,7 +25,7 @@ pnpm add -D git-install-hook
 
 The command is supposed to run with `simple-git-hooks` or `husky`.
 
-### Basic usage
+### Basic usage in terminal
 
 ```bash
 # run normally
@@ -37,10 +37,12 @@ git-install-hook --prompt
 
 ### simple-git-hooks
 
+Install `simple-git-hooks` and initialize it. After that you can add the hooks to your `package.json`. Below example is for `pnpm`. For `npm` and `yarn` you can use `npx` or `yarn dlx` instead of `pnpm exec`.
+
 ```json
 "simple-git-hooks": {
-    "post-checkoout": "git-install-hook",
-    "post-merge": "git-install-hook --prompt"
+    "post-checkoout": "pnpm exec git-install-hook",
+    "post-merge": "pnpm exec git-install-hook --prompt"
 }
 ```
 
@@ -54,7 +56,7 @@ npx simple-git-hooks
 yarn dlx simple-git-hooks
 
 # pnpm
-pnpm dlx simple-git-hooks
+pnpm exec simple-git-hooks
 ```
 
 ### husky
@@ -76,13 +78,13 @@ Add the `post-checkout` or the `post-merge` hook:
 
 ```bash
 # npm
-npx husky add .husky/post-checkout "git-install-hook"
+npx husky add .husky/post-checkout "npx git-install-hook"
 
 # yarn
-yarn dlx husky add .husky/post-checkout "git-install-hook"
+yarn dlx husky add .husky/post-checkout "yarn dlx git-install-hook"
 
 # pnpm
-pnpm dlx husky add .husky/post-checkout "git-install-hook"
+pnpm dlx husky add .husky/post-checkout "pnpm exec git-install-hook"
 ```
 
 ## Flags
