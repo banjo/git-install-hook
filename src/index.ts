@@ -12,7 +12,8 @@ const argv = cli({
     name: "git-install-hook",
     version,
     help: {
-        description: "Install (or prompt for installation) when a lock file changes",
+        description: `Install (or prompt for installation) when a lock file changes. 
+Automatically detects the package manager to use.`,
     },
     flags: {
         debug: {
