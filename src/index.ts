@@ -82,7 +82,7 @@ const main = async (args: CliType) => {
     const diff = diffCommand.stdout;
     if (!diff.includes(selectedLockFile)) {
         debug(`No changes to ${selectedLockFile}, exiting`);
-        // process.exit(0);
+        process.exit(0);
     }
 
     if (args.flags.prompt) {
