@@ -16,7 +16,6 @@ const main = async (args: CliType) => {
     }
 
     if (args.flags.prompt) {
-        console.log(`📦 Changes detected to ${lockFile}, do you want to install?`);
         const shouldInstall = await promptForInstall();
         if (!shouldInstall) process.exit(0);
     }

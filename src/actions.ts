@@ -25,10 +25,11 @@ export const installDependencies = async (packageManager: PackageManager) => {
 };
 
 export const promptForInstall = async () => {
+    debug("Prompting user for install");
     const answer = await prompts({
         type: "confirm",
         name: "value",
-        message: "Do you want to install now?",
+        message: "📦 Changes detected, do you want to install?",
         initial: true,
     });
 
