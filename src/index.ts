@@ -10,7 +10,7 @@ const main = async (args: CliType) => {
     if (args.flags.debug) createDebugger.enable("*");
     const { lockFile, packageManager } = await getPackageManager();
 
-    if (!hasChanged(lockFile)) {
+    if (!(await hasChanged(lockFile))) {
         console.log("📦 No changes to lock file");
         process.exit(0);
     }
