@@ -34,11 +34,9 @@ type CliType = typeof argv;
 
 const main = async (args: CliType) => {
     const debug = createDebugger("git-install-hook");
-
     if (args.flags.debug) createDebugger.enable("*");
 
     const defaultPackageManager = "npm";
-
     const lockFileMap = {
         npm: "package-lock.json",
         yarn: "yarn.lock",
