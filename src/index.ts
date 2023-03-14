@@ -8,8 +8,6 @@ import prompts from "prompts";
 import { version } from "../package.json";
 import { command } from "./command";
 
-console.log(); // Add a newline
-
 const argv = cli({
     name: "git-install-hook",
     version,
