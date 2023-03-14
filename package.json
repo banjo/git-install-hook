@@ -3,7 +3,7 @@
     "type": "module",
     "version": "0.0.1",
     "private": false,
-    "description": "",
+    "description": "Git hook to install dependencies on branch change or after a merge whenever the lock file changes",
     "author": "Anton Ödman <anton.odman@gmail.com>",
     "license": "MIT",
     "homepage": "https://github.com/banjo/git-install-hook#readme",
