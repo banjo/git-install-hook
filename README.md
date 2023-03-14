@@ -2,6 +2,8 @@
 
 Install dependencies automatically when you change branches or merge and some new dependencies have been added or removed. It uses the `post-checkout` and `post-merge` hooks. It detects the package manager used in the project and installs the dependencies. You can prompt the user if you want to install the dependencies on change. It works with `simple-git-hooks` and `husky`.
 
+![git-install-hook example](.github/assets/git-install-hook.png)
+
 ## Supported package managers
 
 -   [npm](https://www.npmjs.com/)
