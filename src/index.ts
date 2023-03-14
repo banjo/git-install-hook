@@ -20,9 +20,9 @@ const main = async (args: CliType) => {
         if (!shouldInstall) process.exit(0);
     }
 
-    console.log(`${args.flags.prompt ? "" : "📦 "}Installing updated dependencies`);
+    console.log(`📦 Installing updated dependencies`);
     await installDependencies(packageManager);
-    console.log("✅ Installed updated dependencies");
+    console.log("✅ Done!");
 };
 
 main(argv);

@@ -29,7 +29,7 @@ export const promptForInstall = async () => {
     const answer = await prompts({
         type: "confirm",
         name: "value",
-        message: "📦 Changes detected, do you want to install?",
+        message: "Changes detected to dependencies, do you want to install?",
         initial: true,
     });
 
