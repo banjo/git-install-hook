@@ -1,7 +1,7 @@
 import { default as createDebugger } from "debug";
 import { execaCommand, Options } from "execa";
 
-const debug = createDebugger("cli");
+const debug = createDebugger("utils");
 
 export const command = async (cliCommand: string, options?: Options | undefined) => {
     try {
