@@ -8,7 +8,7 @@ const debug = createDebugger("package-manager");
 export const getPackageManager = async () => {
     const lockFiles = await globby(Object.values(lockFileMap), {
         ignore: ["node_modules"],
-        gitignore: true,
+        gitignore: false,
     });
 
     debug(`Found lock files: ${lockFiles}`);
