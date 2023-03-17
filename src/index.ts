@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { default as createDebugger } from "debug";
+import pc from "picocolors";
 import { installDependencies, promptForInstall } from "./actions";
 import { argv, CliType } from "./cli";
 import { hasChanged } from "./git";
@@ -11,7 +12,7 @@ const main = async (args: CliType) => {
     const { lockFile, packageManager } = await getPackageManager();
 
     if (!(await hasChanged(lockFile))) {
-        console.log("📦 No changes to lock file");
+        console.log(pc.green("📦 No changes to lock file"));
         process.exit(0);
     }
 
@@ -20,9 +21,9 @@ const main = async (args: CliType) => {
         if (!shouldInstall) process.exit(0);
     }
 
-    console.log(`📦 Installing updated dependencies`);
+    console.log(pc.yellow(`📦 Installing updated dependencies`));
     await installDependencies(packageManager);
-    console.log("✅ Done!");
+    console.log(pc.green("✅ Done!"));
 };
 
 main(argv);
