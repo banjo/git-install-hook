@@ -21,6 +21,18 @@ Automatically detects the package manager to use.`,
             alias: "p",
             default: false,
         },
+        installation: {
+            type: String,
+            description: "Installation output (show, spinner, hide)",
+            alias: "i",
+            default: "show",
+        },
+        noText: {
+            type: Boolean,
+            description: "Disable text informational output",
+            alias: "t",
+            default: false,
+        },
     },
 });
 

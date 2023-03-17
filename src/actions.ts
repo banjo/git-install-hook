@@ -1,11 +1,13 @@
 import { default as createDebugger } from "debug";
+import ora from "ora";
+import pc from "picocolors";
 import prompts from "prompts";
 import { installCommandMap, PackageManager } from "./maps";
 import { command } from "./utils";
 
 const debug = createDebugger("actions");
 
-export const installDependencies = async (packageManager: PackageManager) => {
+export const installDependencies = async (packageManager: PackageManager, installation: string) => {
     const installCommand = installCommandMap[packageManager];
 
     if (!installCommand) {
@@ -15,8 +17,21 @@ export const installDependencies = async (packageManager: PackageManager) => {
         throw new Error(`Could not find install command for package manager ${packageManager}`);
     }
 
+    const spinner = ora(pc.yellow("Installing dependencies..."));
+    if (installation === "spinner") {
+        debug(`Showing spinner during installation`);
+        spinner.start();
+    }
+
     debug(`Running install command: ${installCommand}`);
-    const installResponse = await command(installCommand, { stdio: "inherit" });
+    const installResponse = await command(installCommand, {
+        stdio: installation === "show" ? "inherit" : "ignore",
+    });
+
+    if (installation === "spinner") {
+        debug(`Stopping spinner`);
+        spinner.stop();
+    }
 
     if (!installResponse) {
         debug(`Install command failed, throwing error`);

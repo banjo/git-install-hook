@@ -97,3 +97,5 @@ pnpm dlx husky add .husky/post-checkout "pnpm exec git-install-hook"
 
 -   `--prompt` - Ask if you want to install the dependencies on change.
 -   `--debug` - Show debug messages.
+-   `--installation` - Installation output. Can be `show`, `hide` or `spinner`. Default is `show`.
+-   `--no-text` - Don't show information text output.
