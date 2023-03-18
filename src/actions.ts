@@ -18,7 +18,8 @@ export const installDependencies = async (packageManager: PackageManager, instal
         throw new Error(`Could not find install command for package manager ${packageManager}`);
     }
 
-    const spinner = ora(pc.yellow("Installing dependencies..."));
+    const spinner = ora("Installing dependencies...");
+    spinner.color = "yellow";
     if (installation === "spinner") {
         debug(`Showing spinner during installation`);
         spinner.start();
