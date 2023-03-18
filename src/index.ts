@@ -29,6 +29,7 @@ const main = async (args: CliType) => {
 
     await installDependencies(packageManager, installation);
     if (showText) console.log(pc.green("✅ Installation done!"));
+    process.exit(0);
 };
 
 main(argv);
