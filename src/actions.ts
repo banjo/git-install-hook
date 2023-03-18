@@ -40,13 +40,13 @@ export const installDependencies = async (packageManager: PackageManager, instal
     }
 };
 
-export const promptForInstall = async () => {
+export const promptForInstall = async (lockFile: string) => {
     debug("Prompting user for install");
 
     const prompt = await prompts({
         type: "toggle",
         name: "value",
-        message: pc.yellow("Dependencies have been updated, do you want to install?"),
+        message: `Changes detected to ${pc.yellow(lockFile)}, install dependencies?`,
         active: "yes",
         inactive: "no",
         initial: true,
