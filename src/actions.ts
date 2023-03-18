@@ -41,14 +41,17 @@ export const installDependencies = async (packageManager: PackageManager, instal
 
 export const promptForInstall = async () => {
     debug("Prompting user for install");
-    const answer = await prompts({
-        type: "confirm",
+
+    const prompt = await prompts({
+        type: "toggle",
         name: "value",
-        message: "Changes detected to dependencies, do you want to install?",
+        message: "Dependencies have been updated, do you want to install?",
+        active: "yes",
+        inactive: "no",
         initial: true,
     });
 
-    if (!answer.value) {
+    if (!prompt.value) {
         debug("User declined to install, exiting");
         return false;
     }

@@ -23,11 +23,10 @@ const main = async (args: CliType) => {
     if (args.flags.prompt) {
         const shouldInstall = await promptForInstall();
         if (!shouldInstall) process.exit(0);
-    }
-
-    if (showText) {
+    } else if (showText) {
         console.log(pc.yellow(`📦 Changes detected to ${lockFile}`));
     }
+
     await installDependencies(packageManager, installation);
     if (showText) console.log(pc.green("✅ Installation done!"));
 };
