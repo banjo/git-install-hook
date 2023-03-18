@@ -46,7 +46,7 @@ export const promptForInstall = async () => {
     const prompt = await prompts({
         type: "toggle",
         name: "value",
-        message: "Dependencies have been updated, do you want to install?",
+        message: pc.yellow("Dependencies have been updated, do you want to install?"),
         active: "yes",
         inactive: "no",
         initial: true,
