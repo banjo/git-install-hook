@@ -1,7 +1,6 @@
 {
     "extends": "@banjoanton/eslint-config",
     "rules": {
-        "banjo/one-line-if": "off",
-        "@typescript-eslint/ban-ts-comment": "off"
+        "banjo/one-line-if": "off"
     }
 }

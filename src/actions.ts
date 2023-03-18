@@ -2,7 +2,6 @@ import { default as createDebugger } from "debug";
 import ora from "ora";
 import pc from "picocolors";
 import prompts from "prompts";
-// @ts-ignore
 import ttys from "ttys";
 import { installCommandMap, PackageManager } from "./maps";
 import { command } from "./utils";
