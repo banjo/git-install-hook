@@ -14,15 +14,15 @@
     "bugs": "https://github.com/banjo/git-install-hook/issues",
     "keywords": [],
     "sideEffects": false,
-    "main": "dist/app.js",
-    "module": "dist/app.js",
-    "types": "dist/app.d.ts",
-    "bin": "dist/index.js",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "bin": "dist/bin.js",
     "exports": {
         ".": {
-            "types": "./dist/app.d.ts",
-            "require": "./dist/app.cjs",
-            "import": "./dist/app.js"
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.cjs",
+            "import": "./dist/index.js"
         }
     },
     "files": [
