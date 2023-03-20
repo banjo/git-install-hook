@@ -21,8 +21,8 @@
     "exports": {
         ".": {
             "types": "./dist/app.d.ts",
-            "require": "./dist/index.cjs",
-            "import": "./dist/index.js"
+            "require": "./dist/app.cjs",
+            "import": "./dist/app.js"
         }
     },
     "files": [
