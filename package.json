@@ -1,7 +1,7 @@
 {
     "name": "git-install-hook",
     "type": "module",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "private": false,
     "description": "Git hook to install dependencies on branch change or after a merge whenever the lock file changes",
     "author": "Anton Ödman <anton.odman@gmail.com>",
